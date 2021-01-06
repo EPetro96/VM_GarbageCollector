@@ -1,0 +1,94 @@
+# Compute nth fibonacci number
+# Indexing starts at 0
+# Correct up to n = 46
+# Invalid input -> nop
+
+0
+1
+
+read1:
+input
+dup 0
+'0'
+lt
+jnz fail
+dup 0
+'9'
+gt
+jnz fail
+'0'
+sub
+
+read2:
+input
+dup 0
+0
+lt
+jnz fib
+dup 0
+'\n'
+eq
+jnz fib
+dup 0
+'0'
+lt
+jnz fail
+dup 0
+'9'
+gt
+jnz fail
+'0'
+sub
+swap 1
+10
+mul
+add
+jump read2
+
+fib:
+drop
+loop:
+dup 0
+0
+eq
+jnz print
+1
+sub
+swap 2
+dup 1
+add
+swap 1
+swap 2
+jump loop
+
+print:
+drop
+drop
+0
+dup 1
+ascii:
+dup 0
+10
+mod
+'0'
+add
+swap 1
+10
+div
+dup 0
+jnz ascii
+drop
+
+digits:
+dup 0
+0
+eq
+jnz exit
+output
+jump digits
+
+exit:
+'\n'
+output
+fail:
+halt

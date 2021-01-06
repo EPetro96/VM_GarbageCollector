@@ -1,0 +1,68 @@
+# A simple line numbering
+# program similar to nl
+# Numbering starts at 1
+# Number separator '\t'
+
+1
+line:
+0
+dup 1
+ascii:
+dup 0
+10
+mod
+'0'
+add
+swap 1
+10
+div
+dup 0
+jnz ascii
+drop
+
+digits:
+dup 0
+0
+eq
+jnz inc
+output
+jump digits
+
+inc:
+drop
+'\t'
+output
+1
+add
+
+read:
+input
+dup 0
+0
+lt
+jnz exit
+
+print:
+dup 0
+output
+'\n'
+eq
+jnz line
+jump read
+
+exit:
+'\n'
+output
+
+"Time: "
+message:
+dup 0
+jnz print_msg
+drop
+jump clk
+print_msg:
+output
+jump message
+clk:
+clock
+halt

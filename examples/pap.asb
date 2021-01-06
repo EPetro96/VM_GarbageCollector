@@ -1,0 +1,21 @@
+# operand 1
+-3
+# operand 2
+2
+
+mul
+dup 0
+0
+ge
+jnz out
+'-'
+output
+-1
+mul
+out:
+'0'
+add
+output
+'\n'
+output
+
